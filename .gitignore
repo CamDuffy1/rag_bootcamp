@@ -21,3 +21,5 @@ old/
 
 /*venv*
 */webpage_to_pdf
+*/webpage_to_pdf/*
+.env
