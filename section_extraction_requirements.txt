@@ -1,0 +1,14 @@
+ipykernel
+pymupdf
+sec-edgar-api
+pdfkit==1.0.0
+wkhtmltopdf==0.2
+python-dotenv==1.0.1
+cohere
+llama-index-core
+llama-index-llms-cohere
+llama-index-llms-litellm
+llama-index-readers-file
+llama-index-embeddings-cohere
+llama-index-postprocessor-cohere-rerank
+

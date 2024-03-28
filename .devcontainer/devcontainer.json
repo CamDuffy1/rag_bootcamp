@@ -1,0 +1,26 @@
+{
+    "build": {
+      "dockerfile": "./Dockerfile",
+      "context": ".."
+    },
+    "runArgs": ["-u", "root"],
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "ms-python.python",
+          "ms-toolsai.jupyter",
+          "analytic-signal.preview-pdf",
+          "ms-azuretools.vscode-docker"
+        ],
+        "settings": {
+          "workbench.colorTheme": "Visual Studio Dark",
+          "workbench.startupEditor": "none",
+          "terminal.integrated.cwd": "/workspaces/pymupdf",
+          "notebook.output.wordWrap": true,
+          "python.defaultInterpreterPath": "/section_extraction_venv/bin/python3.11"
+        }
+      }
+    },
+    "postAttachCommand": "code /workspaces/pymupdf/secedgar.ipynb"
+  }
+  
