@@ -1,6 +1,6 @@
 from fitz import Document
 
-def get_words_from_PDF(doc: Document, start_page: int = 3) -> list[str]:
+def get_words_from_PDF(doc: Document, start_page: int = 3, lowercase: bool = True) -> list[str]:
     '''
     Gets the words from a PDF document from a specified page number until the end of the document.
     Args:
@@ -9,7 +9,11 @@ def get_words_from_PDF(doc: Document, start_page: int = 3) -> list[str]:
         start_page (int):
             The page number of the PDF document to being getting words from.
             Words from the page will be included in the returned list of words.
-            Useful for omitting the table of contents from the list of words to search through for section content later on. 
+            Useful for omitting the table of contents from the list of words to search through for section content later on.
+        lowercase (bool):
+            Set to True (default) to retrieve all words in lowercase format. This can help with searching for substrings within
+            the returned list of words.
+            Set to False to retrieve all words in their format as-is.
     Returns:
         all_words (list[str]):
             The list of words from the PDF, beginning at start_page until the end of the document.        
@@ -19,11 +23,10 @@ def get_words_from_PDF(doc: Document, start_page: int = 3) -> list[str]:
         page = doc[i]
         words = page.get_text("words")
         for word in words:
-            all_words.append(word[4])
+            all_words.append(word[4].lower()) if lowercase == True else all_words.append(word[4])
     return all_words
 
-
-def get_section(start_str: str, end_string: str, words: list[str]) -> str | None:
+def get_section(start_str: str, end_str: str, words: list[str]) -> str | None:
     '''
     Gets a section of content from a PDF file.
     Returns the text between start_str and end_str.
@@ -42,7 +45,7 @@ def get_section(start_str: str, end_string: str, words: list[str]) -> str | None
     TODO: Add support for returning section at end of document.
     '''
     start_words = start_str.split(" ")
-    end_words = end_string.split(" ")
+    end_words = end_str.split(" ")
 
     search_start_str = ""
     search_end_str = ""
@@ -65,15 +68,15 @@ def get_section(start_str: str, end_string: str, words: list[str]) -> str | None
                 search_start_str = ""; idx = 0
                 
         else:
-            # once start_str has been found, append to start_body until end_string is found
+            # once start_str has been found, append to start_body until end_str is found
             if not end_str_found:
                 section_body += word if len(section_body) == 0 else f" {word}"
                 if word == end_words[idx]:
                     search_end_str += word if len(search_end_str) == 0 else f" {word}"
                     idx += 1
-                    if search_end_str == end_string:
+                    if search_end_str == end_str:
                         # found end_str
-                        section_body = section_body[:-len(end_string)-1]    # retroactively remove the begining of the next section (and trailing space) from the end of the section body after the end string is found.
+                        section_body = section_body[:-len(end_str)-1]    # retroactively remove the begining of the next section (and trailing space) from the end of the section body after the end string is found.
                         return section_body
                 else:
                     search_end_str = ""; idx = 0
@@ -81,7 +84,7 @@ def get_section(start_str: str, end_string: str, words: list[str]) -> str | None
     if not start_str_found:
         print(f'Could not find start_str: "{start_str}"')
     elif not end_str_found:
-        print(f'Could not find end_string: "{end_string}"')
+        print(f'Could not find end_str: "{end_str}"')
     return None
 
 
