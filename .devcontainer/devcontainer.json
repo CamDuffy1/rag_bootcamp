@@ -21,6 +21,6 @@
         }
       }
     },
-    "postAttachCommand": "code /workspaces/rag_bootcamp/document_search/Section Extraction at Scale (Small).ipynb"
+    "postAttachCommand": "code '/workspaces/rag_bootcamp/document_search/Section Extraction at Scale - Small.ipynb'"
   }
   

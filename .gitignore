@@ -17,3 +17,7 @@ rag_venv/
 # cache
 __pycache__/
 old/
+
+
+/*venv*
+*/webpage_to_pdf
