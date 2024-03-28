@@ -15,12 +15,12 @@
         "settings": {
           "workbench.colorTheme": "Visual Studio Dark",
           "workbench.startupEditor": "none",
-          "terminal.integrated.cwd": "/workspaces/pymupdf",
+          "terminal.integrated.cwd": "/workspaces/rag_bootcamp",
           "notebook.output.wordWrap": true,
           "python.defaultInterpreterPath": "/section_extraction_venv/bin/python3.11"
         }
       }
     },
-    "postAttachCommand": "code /workspaces/pymupdf/secedgar.ipynb"
+    "postAttachCommand": "code /workspaces/rag_bootcamp/document_search/Section Extraction at Scale (Small).ipynb"
   }
   
