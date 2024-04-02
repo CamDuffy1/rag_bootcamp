@@ -3,6 +3,10 @@
 
 Forked version of the RAG Bootcamp repository. Open in GitHub Codespaces (button above) to run notebooks with the dependencies installed to convert webpages to PDF files.
 
+The Github Codespace takes a few minutes to build the first time your create it.
+
+---
+
 # RAG Bootcamp
 
 This is a collection of reference implementations for Vector Institute's **RAG (Retrieval-Augmented Generation) Bootcamp**, scheduled to take place in February-March 2024. It demonstrates some of the common methodologies used in RAG workflows (data ingestion, chunks, embeddings, vector databases, sparse/dense retrieval, reranking) using the popular Python [langchain](https://python.langchain.com/docs/get_started/introduction) and [llama_index](https://docs.llamaindex.ai/en/stable/) libraries.
